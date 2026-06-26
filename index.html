@@ -9,8 +9,8 @@
   <script src="https://unpkg.com/@babel/standalone@7.22.5/babel.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Meiryo',sans-serif; background: linear-gradient(160deg,#fef5ff 0%,#f0f4ff 50%,#f5fff8 100%); min-height:100vh; color:#4a4a6a; }
-    #root { min-height:100vh; }
+    body { font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans','Meiryo',sans-serif; background: linear-gradient(160deg,#fef5ff 0%,#f0f4ff 50%,#f5fff8 100%); min-height:100vh; color:#4a4a6a; overflow-x:hidden; width:100%; }
+    #root { min-height:100vh; overflow-x:hidden; }
     ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:transparent} ::-webkit-scrollbar-thumb{background:#d8c8f0;border-radius:3px}
     @keyframes slideUp { from{opacity:0;transform:translateY(18px) scale(0.97)} to{opacity:1;transform:translateY(0) scale(1)} }
     @keyframes pulse   { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
@@ -1184,7 +1184,7 @@ function App() {
   const PAGES=[['calendar','📅 カレンダー'],['medical','🏥 通院履歴'],['measurement','📏 身体記録']];
 
   return (
-    <div style={{minHeight:'100vh',padding:isMob?'6px 4px 30px':'16px 13px 40px',maxWidth:'820px',margin:'0 auto'}}>
+    <div style={{minHeight:'100vh',padding:isMob?'6px 4px 30px':'16px 13px 40px',maxWidth:'820px',margin:'0 auto',width:'100%',overflowX:'hidden'}}>
       {/* Header */}
       <div style={{background:'white',borderRadius:'16px',padding:isMob?'10px 12px':'14px 18px',marginBottom:'8px',boxShadow:'0 4px 24px rgba(180,140,220,0.12)',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'6px'}}>
         <div style={{minWidth:0}}>
@@ -1224,7 +1224,7 @@ function App() {
       {/* Calendar */}
       {page==='calendar'&&(
         <>
-          <div style={{background:'white',borderRadius:'20px',overflow:'hidden',boxShadow:'0 4px 24px rgba(180,140,220,0.12)'}}>
+          <div style={{background:'white',borderRadius:'20px',overflow:'hidden',boxShadow:'0 4px 24px rgba(180,140,220,0.12)',width:'100%'}}>
             <div style={{display:'grid',gridTemplateColumns:'repeat(7,minmax(0,1fr))',borderBottom:'2px solid #f0ecfa'}}>
               {WEEKDAYS.map((w,i)=><div key={w} style={{padding:isMob?'5px 2px':'9px 4px',textAlign:'center',fontSize:isMob?'11px':'13px',fontWeight:'700',color:i===0?'#e07080':i===6?'#8070c8':'#9090b0',background:i===0?'#fff5f6':i===6?'#f8f5ff':'transparent'}}>{w}</div>)}
             </div>
